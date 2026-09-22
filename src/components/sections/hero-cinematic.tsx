@@ -35,7 +35,7 @@ export function HeroCinematic({ onVideoEnd, onExplore, onBooking }: HeroCinemati
   const handleEnded = () => {
     setVideoEnded(true);
     if (videoRef.current) {
-      // Loop suave contínuo em baixa opacidade mantendo a água e a embarcação vivas em segundo plano
+      // Loop suave contínuo mantendo o jet ski e o spray de água dinâmicos
       videoRef.current.loop = true;
       videoRef.current.play().catch(() => {});
     }
@@ -72,12 +72,12 @@ export function HeroCinematic({ onVideoEnd, onExplore, onBooking }: HeroCinemati
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
       />
 
-      {/* Atmospheric Video Vignette */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+      {/* Atmospheric Nautical Vignette */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
 
-      {/* Translucent White Luxury Frosted Veil - Mais transparente conforme pedido */}
+      {/* Translucent White Luxury Frosted Veil (Visivelmente transparente, mantendo o vídeo em evidência) */}
       <div
-        className={`absolute inset-0 bg-gradient-to-t from-white/75 via-white/50 to-white/25 backdrop-blur-[5px] transition-all duration-1000 pointer-events-none ${
+        className={`absolute inset-0 bg-gradient-to-t from-white/70 via-white/30 to-transparent backdrop-blur-[2px] transition-all duration-1000 pointer-events-none ${
           videoEnded ? "opacity-100" : "opacity-0"
         }`}
       />
@@ -87,7 +87,7 @@ export function HeroCinematic({ onVideoEnd, onExplore, onBooking }: HeroCinemati
         {!videoEnded && (
           <button
             onClick={handleSkip}
-            className="px-3.5 py-1.5 text-[10px] uppercase tracking-[0.25em] text-white bg-black/50 backdrop-blur-md border border-white/20 hover:bg-black/70 transition-all cursor-pointer font-mono shadow-sm"
+            className="px-3.5 py-1.5 text-[10px] uppercase tracking-[0.25em] text-white bg-black/60 backdrop-blur-md border border-white/20 hover:bg-black/80 transition-all cursor-pointer font-mono shadow-sm"
             aria-label="Pular introdução de vídeo"
           >
             Pular Introdução
@@ -95,7 +95,7 @@ export function HeroCinematic({ onVideoEnd, onExplore, onBooking }: HeroCinemati
         )}
         <button
           onClick={toggleSound}
-          className="p-2.5 rounded-full bg-white/80 backdrop-blur-md text-[#0a0a0a] border border-black/10 shadow-sm hover:bg-white transition-all cursor-pointer"
+          className="p-2.5 rounded-full bg-white/85 backdrop-blur-md text-[#0a0a0a] border border-black/15 shadow-sm hover:bg-white transition-all cursor-pointer"
           aria-label={isMuted ? "Ativar áudio" : "Desativar áudio"}
         >
           {isMuted ? (
@@ -120,10 +120,10 @@ export function HeroCinematic({ onVideoEnd, onExplore, onBooking }: HeroCinemati
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.6 }}
-              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-black/10 shadow-xs mb-6"
+              className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-black/15 shadow-sm mb-6"
             >
               <Compass className="w-3.5 h-3.5 text-[#c43818]" strokeWidth={1.5} />
-              <span className="text-[10px] uppercase tracking-[0.35em] text-neutral-800 font-mono font-medium">
+              <span className="text-[10px] uppercase tracking-[0.35em] text-neutral-900 font-mono font-semibold">
                 VERTEX MARINE DYNAMICS • COLEÇÃO DE HIPERLUXO 2026
               </span>
             </motion.div>
@@ -133,20 +133,20 @@ export function HeroCinematic({ onVideoEnd, onExplore, onBooking }: HeroCinemati
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.8 }}
-              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-[#0a0a0a] uppercase mb-6 font-display leading-[0.95] drop-shadow-xs"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-[#0a0a0a] uppercase mb-6 font-display leading-[0.95] drop-shadow-sm"
             >
               O ÁPICE DA <br />
-              <span className="text-neutral-600">
+              <span className="text-neutral-700">
                 HIDRODINÂMICA PURA
               </span>
             </motion.h1>
 
-            {/* Technical Sub-headline */}
+            {/* Technical Sub-headline with High-Contrast Frosted Backing */}
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.45, duration: 0.7 }}
-              className="text-xs sm:text-sm tracking-[0.2em] uppercase text-neutral-700 font-mono font-medium max-w-2xl mb-10 leading-relaxed bg-white/40 backdrop-blur-[2px] px-4 py-1 rounded-sm"
+              className="text-xs sm:text-sm tracking-[0.2em] uppercase text-neutral-900 font-mono font-semibold max-w-2xl mb-10 leading-relaxed bg-white/70 backdrop-blur-sm px-4 py-1.5 rounded-sm border border-black/10 shadow-2xs"
             >
               380 HP · Casco Monocoque em Fibra de Carbono T1000 · 0 a 100 km/h em 2.4 segundos
             </motion.p>
@@ -166,7 +166,7 @@ export function HeroCinematic({ onVideoEnd, onExplore, onBooking }: HeroCinemati
               </button>
               <button
                 onClick={onExplore}
-                className="w-full sm:w-auto px-8 py-4 bg-white/90 backdrop-blur-md text-[#0a0a0a] text-xs uppercase tracking-[0.25em] font-semibold hover:bg-white transition-all cursor-pointer font-display border border-black/15 shadow-sm"
+                className="w-full sm:w-auto px-8 py-4 bg-white/95 backdrop-blur-md text-[#0a0a0a] text-xs uppercase tracking-[0.25em] font-semibold hover:bg-white transition-all cursor-pointer font-display border border-black/20 shadow-md"
               >
                 Explorar Frota 2026
               </button>
@@ -183,10 +183,10 @@ export function HeroCinematic({ onVideoEnd, onExplore, onBooking }: HeroCinemati
           transition={{ delay: 1, duration: 0.8 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 pointer-events-none"
         >
-          <span className="text-[9px] uppercase tracking-[0.3em] text-neutral-700 font-mono font-semibold bg-white/60 px-2 py-0.5 backdrop-blur-[2px]">
+          <span className="text-[9px] uppercase tracking-[0.3em] text-neutral-800 font-mono font-bold bg-white/80 px-2 py-0.5 backdrop-blur-sm border border-black/5">
             ROLAR PARA ENGENHARIA
           </span>
-          <ChevronDown className="w-4 h-4 text-neutral-800 animate-bounce" strokeWidth={2} />
+          <ChevronDown className="w-4 h-4 text-black animate-bounce" strokeWidth={2} />
         </motion.div>
       )}
     </section>
